@@ -1,4 +1,4 @@
-const CACHE='tingjian-ielts-v2';
+const CACHE='tingjian-ielts-v3';
 const CORE=['./','./index.html','./styles.css','./app.js','./questions.json','./manifest.webmanifest','./icon.svg'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(CORE)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil((async()=>{for(const key of await caches.keys())if(key.startsWith('tingjian-ielts-')&&key!==CACHE)await caches.delete(key);await self.clients.claim()})()));
