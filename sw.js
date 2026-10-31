@@ -31,7 +31,7 @@ self.addEventListener('fetch', event => {
         if (!response.ok) return response;
         const page = cleanPage(response);
         const cache = await caches.open(CACHE);
-        event.waitUntil(cache.put('./', page.clone()));
+        await cache.put('./', page.clone());
         return page;
       } catch {
         const cached = await caches.match('./');
